@@ -14,6 +14,8 @@ in {
 
   home.stateVersion = "20.03";
 
+  nixpkgs.overlays = [ (import ./overlays) ];
+
   home.packages = with pkgs; [
     ripgrep
     htop
@@ -27,10 +29,10 @@ in {
     tmux
   ];
 
-  # programs.firefox = {
-  #   enable = true;
-  #   package = pkgs.Firefox;
-  # };
+  programs.firefox = {
+    enable = true;
+    package = pkgs.Firefox;
+  };
 
   programs.kitty = {
     enable = true;
