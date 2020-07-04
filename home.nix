@@ -12,67 +12,25 @@ in {
   home.username = "andredanielsson";
   home.homeDirectory = "/Users/andredanielsson";
 
-  # This value determines the Home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new Home Manager release introduces backwards
-  # incompatible changes.
-  #
-  # You can update Home Manager without changing this value. See
-  # the Home Manager release notes for a list of state version
-  # changes in each release.
-  home.stateVersion = "20.09";
+  home.stateVersion = "20.03";
 
   home.packages = with pkgs; [
     ripgrep
     htop
     tree
     wget
+    jq
 
     # Development
     androidenv.androidPkgs_9_0.platform-tools
     jdk11
     tmux
-    jq
   ];
 
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      shell.program = "fish";
-      colors = {
-        primary = {
-          background = "#1d2021";
-          foreground = "#ebdbb2";
-        };
-        normal = {
-          black = "#282828";
-          red = "#cc241d";
-          green = "#98971a";
-          yellow = "#d79921";
-          blue = "#458588";
-          magenta = "#b16286";
-          cyan = "#689d6a";
-          white = "#a89984";
-        };
-
-        bright = {
-          black = "#928374";
-          red = "#fb4934";
-          green = "#b8bb26";
-          yellow = "#fabd2f";
-          blue = "#83a598";
-          magenta = "#d3869b";
-          cyan = "#8ec07c";
-          white = "#ebdbb2";
-        };
-      };
-    };
-  };
-
-  programs.firefox = {
-    enable = true;
-    package = pkgs.Firefox;
-  };
+  # programs.firefox = {
+  #   enable = true;
+  #   package = pkgs.Firefox;
+  # };
 
   programs.kitty = {
     enable = true;
@@ -80,6 +38,20 @@ in {
 
   programs.fish = {
     enable = true;
+    plugins = [{
+      name="foreign-env";
+      src = pkgs.fetchFromGitHub {
+        owner = "oh-my-fish";
+        repo = "plugin-foreign-env";
+        rev = "dddd9213272a0ab848d474d0cbde12ad034e65bc";
+        sha256 = "00xqlyl3lffc5l0viin1nyp819wf81fncqyz87jx8ljjdhilmgbs";
+      };
+    }];
+    promptInit = ''
+      if test -e '/Users/andredanielsson/.nix-profile/etc/profile.d/nix.sh'
+        fenv source '/Users/andredanielsson/.nix-profile/etc/profile.d/nix.sh'
+      end
+    '';
     shellAliases = {
       ll = "ls -l";
       l = "ls -la";
@@ -97,6 +69,7 @@ in {
     enable = true;
     extraPackages = epkgs: with epkgs; [
       evil
+      evil-leader
       evil-magit
       evil-surround
       gruvbox-theme
