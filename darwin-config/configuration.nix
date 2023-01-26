@@ -12,6 +12,18 @@ in {
   system.stateVersion = 4;
   nix.package = pkgs.nix;
 
+  nix.settings.experimental-features = "nix-command flakes";
+
+  # services.skhd.enable = true;
+  # services.skhd.skhdConfig = builtins.readFile ../dotfiles/skhd.conf;
+
+  #services.cron = {
+  #  enable = true;
+  #  systemCronJobs = [
+  #    ""
+  #  ];
+  #};
+
   environment = {
     systemPackages = with pkgs; [
       home-manager

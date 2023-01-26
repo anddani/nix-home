@@ -20,7 +20,10 @@
 	    (make-local-variable 'js-indent-level)
 	    (setq js-indent-level 2)))
 
+;; (setq evil-want-keybinding nil)
+
 ;; Evil
+(setq evil-want-keybinding nil)
 (require 'evil)
 (require 'evil-leader)
 (setq evil-default-cursor t)
@@ -30,16 +33,26 @@
 (setq evil-leader/in-all-states t)
 (evil-mode 1)
 
+(require 'evil-collection)
+(evil-collection-init)
+
+;; Magit
+(setq split-height-threshold nil)
+(setq split-width-threshold 0)
+(global-set-key (kbd "C-c g") 'magit-status)
+;; (define-key magit-mode-map "V" #'endless/visit-pull-request-url)
+
 ;; Gruvbox
 (require 'gruvbox-theme)
 (load-theme 'gruvbox-dark-soft t)
 
-;; Magit
-(require 'evil-magit)
-(setq split-height-threshold nil)
-(setq split-width-threshold 0)
-(global-set-key (kbd "C-c g") 'magit-status)
-(define-key magit-mode-map "V" #'endless/visit-pull-request-url)
+;; Helm
+(require 'helm)
+(setq helm-mode-fuzzy-match t)
+(setq helm-completion-in-region-fuzzy-match t)
+(setq helm-candidate-number-list 50)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-x b") 'helm-buffers-list)
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
@@ -49,7 +62,7 @@
   '(magit-pull-arguments nil)
   '(package-selected-packages
      (quote
-       (markdown-mode helm-config evil-magit json-mode dracula-theme evil-leader evil)))
+       (markdown-mode helm-config evil-collection json-mode dracula-theme evil-leader evil)))
   '(safe-local-variable-values
      (quote
        ((haskell-process-use-ghci . t)

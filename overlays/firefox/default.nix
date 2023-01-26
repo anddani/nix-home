@@ -1,6 +1,6 @@
 { stdenv, fetchurl, undmg, unzip }:
 let
-  version = "78.0.1";
+  version = "81.0.1";
 
 in
 
@@ -19,7 +19,7 @@ stdenv.mkDerivation rec {
   src = fetchurl {
     name = "Firefox-${version}.dmg";
     url = "https://download-installer.cdn.mozilla.net/pub/firefox/releases/${version}/mac/en-GB/Firefox%20${version}.dmg";
-    sha256 = "1g802hcgllzll4riga7y0yrb6axqci5ff4vvrrvrrhid7nnpg3cl";
+    sha256 = "0djp2fxbwh3fn0y6l3bzwaw3wmrdah3va5zdnm639ahx8rq41kj4";
   };
 
   meta = with stdenv.lib; {
