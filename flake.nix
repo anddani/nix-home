@@ -22,7 +22,7 @@
   //
   {
     homeConfigurations = {
-      mbp2019 = inputs.home-manager.lib.homeManagerConfiguration {
+      mbp2019 = inputs.hm.lib.homeManagerConfiguration {
         pkgs = inputs.nixpkgs.legacyPackages.x86_64-darwin;
         modules = [ ./nixpkgs/home/mac.nix ];
         extraSpecialArgs = { pkgsUnstable = inputs.nixpkgs.legacyPackages.x86_64-darwin; };

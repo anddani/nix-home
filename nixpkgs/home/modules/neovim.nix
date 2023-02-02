@@ -5,7 +5,6 @@
     vimAlias = true;
 
     plugins = with pkgs.vimPlugins; [
-      coc-elm
       gruvbox
 
       neogit
