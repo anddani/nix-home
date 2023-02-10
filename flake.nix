@@ -30,7 +30,7 @@
     };
 
     darwinConfigurations = {
-      # nix build .#darwinConfigurations.mbp2019.system
+      # nix build .#darwinConfigurations.Danielsson.system
       # ./result/sw/bin/darwin-rebuild switch --flake .
       Danielsson = darwin.lib.darwinSystem {
         system = "x86_64-darwin";
