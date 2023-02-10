@@ -24,7 +24,7 @@
     homeConfigurations = {
       mbp2019 = inputs.hm.lib.homeManagerConfiguration {
         pkgs = inputs.nixpkgs.legacyPackages.x86_64-darwin;
-        modules = [ ./nixpkgs/home/mac.nix ];
+        modules = [ ./home/mac.nix ];
         extraSpecialArgs = { pkgsUnstable = inputs.nixpkgs.legacyPackages.x86_64-darwin; };
       };
     };
@@ -34,7 +34,7 @@
       # ./result/sw/bin/darwin-rebuild switch --flake .
       Danielsson = darwin.lib.darwinSystem {
         system = "x86_64-darwin";
-        modules = [ ./nixpkgs/darwin/mbp2019/configuration.nix ];
+        modules = [ ./darwin/mbp2019/configuration.nix ];
         inputs = { inherit darwin nixpkgs; };
       };
     };
