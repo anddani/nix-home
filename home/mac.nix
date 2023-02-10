@@ -4,7 +4,7 @@
     ./modules/home-manager.nix
     ./modules/common.nix
     ./modules/fish.nix
-    ./modules/neovim.nix
+    ./modules/neovim
     ./modules/emacs.nix
     ./modules/kitty.nix
   ];
