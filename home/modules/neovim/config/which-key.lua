@@ -16,6 +16,7 @@ wk.register({
             g = { "<cmd>Neogit<cr>", "Neogit" }
         }
     },
+    ["<C-t>"] = { "<cmd>NERDTreeToggle<cr>", "Toggle NERDTree" },
     ["<C-p>"] = { "<cmd>tabnext<cr>", "Previous tab" },
     ["<C-n>"] = { "<cmd>tabnext<cr>", "Next tab" }
 })
