@@ -38,6 +38,7 @@
           + "/${module}.lua");
       luaConfig = builtins.concatStringsSep "\n" (map luaRequire [
         "init"
+        "neogit"
         "which-key"
       ]);
     in ''
