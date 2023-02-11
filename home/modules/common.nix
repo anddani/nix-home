@@ -1,6 +1,6 @@
 { config, pkgs, libs, ... }:
 let
-  ghcVersion = "ghc8107";
+  ghcVersion = "ghc924";
 
   haskell-env = with pkgs.haskell.packages.${ghcVersion}; [
     hlint

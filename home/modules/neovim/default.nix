@@ -15,6 +15,10 @@
 
     extraPackages = with pkgs; [
       rnix-lsp
+      haskell-language-server
+      cabal-install
+      elmPackages.elm
+      elmPackages.elm-language-server
     ];
 
     coc = {
@@ -24,6 +28,19 @@
           nix = {
             command = "rnix-lsp";
             filetypes = [ "nix" ];
+          };
+          haskell = {
+            command = "haskell-language-server-wrapper";
+            args = [ "--lsp" ];
+            rootPatterns = [ ".stack.yaml" ".hie-bios" "BUILD.bazel" "cabal.config" "package.yaml" ];
+            filetypes = [ "hs" "lhs" "haskell" ];
+            initializationOptions = {
+              languageServerHaskell = {
+                hlintOn = true;
+                maxNumberOfProblems = 10;
+                completionSnippetsOn = true;
+              };
+            };
           };
           elmLS = {
             command = "elm-language-server";
