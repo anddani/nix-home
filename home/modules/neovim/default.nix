@@ -13,6 +13,10 @@
       which-key-nvim
     ];
 
+    extraPackages = with pkgs; [
+      rnix-lsp
+    ];
+
     coc = {
       enable = true;
       settings = {
