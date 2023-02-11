@@ -7,7 +7,7 @@ wk.setup({})
 wk.register({
     ["<leader>"] = {
         g = {
-            name = "Git"
+            name = "Git",
             --[[
             i = { "<cmd>lua require('telescope').extensions.gh.issues()<cr>", "Github Issues" },
             p = { "<cmd>lua require('telescope').extensions.gh.pull_request()<cr>", "Github PRs" },
@@ -15,5 +15,7 @@ wk.register({
             ]]--
             g = { "<cmd>Neogit<cr>", "Neogit" }
         }
-    }
+    },
+    ["<C-p>"] = { "<cmd>tabnext<cr>", "Previous tab" },
+    ["<C-n>"] = { "<cmd>tabnext<cr>", "Next tab" }
 })

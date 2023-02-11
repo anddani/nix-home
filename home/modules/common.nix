@@ -17,7 +17,8 @@ in
 {
   home.packages = with pkgs; [
     ripgrep
-    ncdu
+    # https://github.com/NixOS/nixpkgs/issues/214545
+    # ncdu
     ranger
     htop
     tree
