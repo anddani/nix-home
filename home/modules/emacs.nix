@@ -11,6 +11,7 @@
       helm
       magit
       nix-mode
+      use-package
     ];
   };
 }

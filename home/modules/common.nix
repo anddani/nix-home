@@ -26,6 +26,7 @@ in
     coreutils
     jq
     mpv
+    pandoc
 
     dfu-util
 
