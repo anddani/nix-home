@@ -9,6 +9,11 @@ with lib;
 
   security.pam.enableSudoTouchIdAuth = true;
 
+  users.users.andredanielsson = {
+    home = "/Users/andredanielsson";
+    shell = pkgs.fish;
+  };
+
   programs = {
     bash.enable = false;
     zsh.enable = false;
