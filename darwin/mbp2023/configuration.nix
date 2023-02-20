@@ -17,6 +17,7 @@ with lib;
 
   environment = {
     shells = [ pkgs.fish ];
+    loginShell = "/run/current-system/sw/bin/fish";
     variables = {
       EDITOR = "vim";
     };
