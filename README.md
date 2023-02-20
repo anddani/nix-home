@@ -5,6 +5,6 @@
 `$ home-manager switch --flake .#mbp2019`
 
 # old nix-home
-`$ darwin-rebuild switch -I darwin-config=PATH/TO/configuration.nix~
+`$ darwin-rebuild switch -I darwin-config=PATH/TO/configuration.nix`
 
 
