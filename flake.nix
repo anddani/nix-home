@@ -27,6 +27,11 @@
         modules = [ ./home/mac.nix ];
         extraSpecialArgs = { pkgsUnstable = inputs.nixpkgs.legacyPackages.x86_64-darwin; };
       };
+      mbp2023 = inputs.hm.lib.homeManagerConfiguration {
+        pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
+        modules = [ ./home/mac.nix ];
+        extraSpecialArgs = { pkgsUnstable = inputs.nixpkgs.legacyPackages.aarch64-darwin; };
+      };
     };
 
     darwinConfigurations = {

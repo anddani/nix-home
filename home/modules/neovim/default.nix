@@ -15,7 +15,8 @@
 
     extraPackages = with pkgs; [
       rnix-lsp
-      haskell-language-server
+      # https://github.com/NixOS/nixpkgs/issues/140774
+      # haskell-language-server
       cabal-install
       elmPackages.elm
       elmPackages.elm-language-server
@@ -29,19 +30,20 @@
             command = "rnix-lsp";
             filetypes = [ "nix" ];
           };
-          haskell = {
-            command = "haskell-language-server-wrapper";
-            args = [ "--lsp" ];
-            rootPatterns = [ ".stack.yaml" ".hie-bios" "BUILD.bazel" "cabal.config" "package.yaml" ];
-            filetypes = [ "hs" "lhs" "haskell" ];
-            initializationOptions = {
-              languageServerHaskell = {
-                hlintOn = true;
-                maxNumberOfProblems = 10;
-                completionSnippetsOn = true;
-              };
-            };
-          };
+          # https://github.com/NixOS/nixpkgs/issues/140774
+          # haskell = {
+          #   command = "haskell-language-server-wrapper";
+          #   args = [ "--lsp" ];
+          #   rootPatterns = [ ".stack.yaml" ".hie-bios" "BUILD.bazel" "cabal.config" "package.yaml" ];
+          #   filetypes = [ "hs" "lhs" "haskell" ];
+          #   initializationOptions = {
+          #     languageServerHaskell = {
+          #       hlintOn = true;
+          #       maxNumberOfProblems = 10;
+          #       completionSnippetsOn = true;
+          #     };
+          #   };
+          # };
           elmLS = {
             command = "elm-language-server";
             filetypes = [ "elm" ];

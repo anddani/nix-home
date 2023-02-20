@@ -4,7 +4,6 @@ let
 
   haskell-env = with pkgs.haskell.packages.${ghcVersion}; [
     hlint
-    ghcid
     cabal-install
     sqlite-simple
   ];
@@ -40,7 +39,7 @@ in
     # nixops
     jdk11
     nodePackages.typescript
-    nodePackages.firebase-tools
+    # nodePackages.firebase-tools
     nodejs
     stack
     tmux
@@ -54,6 +53,10 @@ in
     tmux = {
       enable = true;
       terminal = "tmux-256color";
+    };
+
+    fish = {
+      enable = true;
     };
 
     fzf = {
