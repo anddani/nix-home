@@ -12,6 +12,8 @@
 
 `$ ./result/sw/bin/darwin-rebuild switch --flake .`
 
+`$ chsh -s /run/current-system/sw/bin/fish`
+
 ## Home manager
 
 `$ home-manager switch --flake .#mbp2023`
