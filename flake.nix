@@ -42,6 +42,11 @@
         modules = [ ./darwin/mbp2019/configuration.nix ];
         inputs = { inherit darwin nixpkgs; };
       };
+      anddaniM2 = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [ ./darwin/mbp2023/configuration.nix ];
+        inputs = { inherit darwin nixpkgs; };
+      };
     };
   };
 }
