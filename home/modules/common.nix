@@ -48,6 +48,8 @@ in
   programs = {
     git = {
       enable = true;
+      userName = "André Danielsson";
+      userEmail = "andredanielsson93@gmail.com";
     };
 
     tmux = {
