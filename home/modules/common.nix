@@ -2,6 +2,8 @@
 let
   ghcVersion = "ghc924";
 
+  extraNodePackages = import ./node-packages/default.nix {};
+
   haskell-env = with pkgs.haskell.packages.${ghcVersion}; [
     hlint
     cabal-install
@@ -41,6 +43,8 @@ in
     nodePackages.typescript
     # nodePackages.firebase-tools
     nodejs
+    node2nix
+    extraNodePackages.fs-extra
     stack
     tmux
   ] ++ haskell-env;

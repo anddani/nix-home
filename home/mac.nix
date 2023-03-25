@@ -103,6 +103,7 @@
       (setq evil-leader/set-leader ",")
       (setq evil-leader/in-all-states t)
       (evil-mode 1)
+      (global-set-key (kbd "\C-c w") #'evil-window-map)
 
       (require 'evil-collection)
       (evil-collection-init)

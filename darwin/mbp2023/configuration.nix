@@ -4,6 +4,7 @@ with lib;
   nix.package = pkgs.nix;
   nix.configureBuildUsers = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.extra-platforms = [ "x86_64-darwin" "aarch64-darwin" ];
 
   services.nix-daemon.enable = true;
 
