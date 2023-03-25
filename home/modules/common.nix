@@ -2,7 +2,18 @@
 let
   ghcVersion = "ghc924";
 
-  extraNodePackages = import ./node-packages/default.nix {};
+  nodejs = pkgs.nodejs-14_x;
+
+  nodeEnv = import ./node-packages/node-env.nix {
+    inherit (pkgs) stdenv lib python2 runCommand writeTextFile writeShellScript;
+    inherit pkgs nodejs;
+    libtool = if pkgs.stdenv.isDarwin then pkgs.darwin.cctools else null;
+  };
+
+  extraNodePackages = import ./node-packages/node-packages.nix {
+    inherit (pkgs) fetchurl nix-gitignore stdenv lib fetchgit;
+    inherit nodeEnv;
+  };
 
   haskell-env = with pkgs.haskell.packages.${ghcVersion}; [
     hlint
@@ -18,6 +29,7 @@ in
 {
   home.packages = with pkgs; [
     ripgrep
+
     # https://github.com/NixOS/nixpkgs/issues/214545
     # ncdu
     ranger
