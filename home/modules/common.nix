@@ -42,6 +42,7 @@ in
     pandoc
 
     dfu-util
+    git-lfs
 
     # Development
     scrcpy
@@ -54,7 +55,7 @@ in
     jdk11
     nodePackages.typescript
     # nodePackages.firebase-tools
-    nodejs
+    nodejs-19_x
     node2nix
     extraNodePackages.fs-extra
     stack
