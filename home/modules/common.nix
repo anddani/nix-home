@@ -43,6 +43,7 @@ in
 
     dfu-util
     git-lfs
+    cmake
 
     # Development
     scrcpy
