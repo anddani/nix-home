@@ -9,6 +9,7 @@
       gruvbox
       neogit
       nerdtree
+      coc-rust-analyzer
       vim-nix
       which-key-nvim
     ];
@@ -17,6 +18,7 @@
       rnix-lsp
       # https://github.com/NixOS/nixpkgs/issues/140774
       # haskell-language-server
+      rust-analyzer
       cabal-install
       elmPackages.elm
       elmPackages.elm-language-server
@@ -29,6 +31,12 @@
           nix = {
             command = "rnix-lsp";
             filetypes = [ "nix" ];
+          };
+          rust-analyzer = {
+            enable = true;
+            server = {
+              path = "rust-analyzer";
+            };
           };
           # https://github.com/NixOS/nixpkgs/issues/140774
           # haskell = {

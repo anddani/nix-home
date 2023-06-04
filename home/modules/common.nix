@@ -43,7 +43,8 @@ in
 
     dfu-util
     git-lfs
-    cmake
+    gh
+    google-cloud-sdk
 
     # Development
     scrcpy
@@ -56,11 +57,18 @@ in
     jdk11
     nodePackages.typescript
     # nodePackages.firebase-tools
-    nodejs-19_x
+    # nodejs-19_x
     node2nix
     extraNodePackages.fs-extra
     stack
     tmux
+
+    # Rust
+    rustc
+    cargo
+    rustfmt
+    rust-analyzer
+    clippy
   ] ++ haskell-env;
 
   programs = {
