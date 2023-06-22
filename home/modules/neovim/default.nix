@@ -69,11 +69,11 @@
           + "/${module}.lua");
       luaConfig = builtins.concatStringsSep "\n" (map luaRequire [
         "init"
-        # "cmp"
+        "cmp"
         "telescope"
-        # "treesitter"
+        "treesitter"
         "neogit"
-        # "rust-tools"
+        "rust-tools"
         "which-key"
       ]);
     in ''
