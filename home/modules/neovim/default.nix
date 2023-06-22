@@ -13,7 +13,8 @@
       nvim-surround
       nvim-treesitter-textobjects
       nvim-treesitter.withAllGrammars
-      rust-vim
+      rust-tools-nvim
+      plenary-nvim
       telescope-fzf-native-nvim
       telescope-nvim
       vim-floaterm
@@ -27,6 +28,7 @@
       cmp-dap
       cmp-nvim-lsp
       cmp-nvim-lsp-document-symbol
+      cmp-treesitter
       cmp-path
     ];
 
@@ -34,6 +36,7 @@
       rnix-lsp
       # https://github.com/NixOS/nixpkgs/issues/140774
       # haskell-language-server
+      rustfmt
       rust-analyzer
       cabal-install
       elmPackages.elm
@@ -65,11 +68,11 @@
           + "/${module}.lua");
       luaConfig = builtins.concatStringsSep "\n" (map luaRequire [
         "init"
-        "cmp"
+        # "cmp"
         "telescope"
-        "treesitter"
+        # "treesitter"
         "neogit"
-        "rust-tools"
+        # "rust-tools"
         "which-key"
       ]);
     in ''
