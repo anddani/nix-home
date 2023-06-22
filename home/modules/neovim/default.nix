@@ -20,6 +20,7 @@
       vim-floaterm
       vim-nix
       which-key-nvim
+      trouble-nvim
 
       # Completion
       nvim-cmp
