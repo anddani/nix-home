@@ -2,19 +2,6 @@
 let
   ghcVersion = "ghc924";
 
-  nodejs = pkgs.nodejs-14_x;
-
-  nodeEnv = import ./node-packages/node-env.nix {
-    inherit (pkgs) stdenv lib python2 runCommand writeTextFile writeShellScript;
-    inherit pkgs nodejs;
-    libtool = if pkgs.stdenv.isDarwin then pkgs.darwin.cctools else null;
-  };
-
-  extraNodePackages = import ./node-packages/node-packages.nix {
-    inherit (pkgs) fetchurl nix-gitignore stdenv lib fetchgit;
-    inherit nodeEnv;
-  };
-
   haskell-env = with pkgs.haskell.packages.${ghcVersion}; [
     hlint
     cabal-install
@@ -57,11 +44,12 @@ in
     jdk11
     nodePackages.typescript
     # nodePackages.firebase-tools
-    # nodejs-19_x
+    nodejs-18_x
     node2nix
-    extraNodePackages.fs-extra
     stack
     tmux
+    cmake
+    ninja
 
     # Rust
     rustc

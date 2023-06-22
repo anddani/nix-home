@@ -9,9 +9,25 @@
       gruvbox
       neogit
       nerdtree
-      coc-rust-analyzer
+      nvim-lspconfig
+      nvim-surround
+      nvim-treesitter-textobjects
+      nvim-treesitter.withAllGrammars
+      rust-vim
+      telescope-fzf-native-nvim
+      telescope-nvim
+      vim-floaterm
       vim-nix
       which-key-nvim
+
+      # Completion
+      nvim-cmp
+      cmp-buffer
+      cmp-cmdline
+      cmp-dap
+      cmp-nvim-lsp
+      cmp-nvim-lsp-document-symbol
+      cmp-path
     ];
 
     extraPackages = with pkgs; [
@@ -32,26 +48,6 @@
             command = "rnix-lsp";
             filetypes = [ "nix" ];
           };
-          rust-analyzer = {
-            enable = true;
-            server = {
-              path = "rust-analyzer";
-            };
-          };
-          # https://github.com/NixOS/nixpkgs/issues/140774
-          # haskell = {
-          #   command = "haskell-language-server-wrapper";
-          #   args = [ "--lsp" ];
-          #   rootPatterns = [ ".stack.yaml" ".hie-bios" "BUILD.bazel" "cabal.config" "package.yaml" ];
-          #   filetypes = [ "hs" "lhs" "haskell" ];
-          #   initializationOptions = {
-          #     languageServerHaskell = {
-          #       hlintOn = true;
-          #       maxNumberOfProblems = 10;
-          #       completionSnippetsOn = true;
-          #     };
-          #   };
-          # };
           elmLS = {
             command = "elm-language-server";
             filetypes = [ "elm" ];
@@ -69,7 +65,11 @@
           + "/${module}.lua");
       luaConfig = builtins.concatStringsSep "\n" (map luaRequire [
         "init"
+        "cmp"
+        "telescope"
+        "treesitter"
         "neogit"
+        "rust-tools"
         "which-key"
       ]);
     in ''
