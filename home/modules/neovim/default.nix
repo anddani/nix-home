@@ -6,7 +6,7 @@
     viAlias = true;
 
     plugins = with pkgs.vimPlugins; [
-      gruvbox
+      catppuccin-nvim
       neogit
       nerdtree
       nvim-lspconfig
@@ -31,6 +31,9 @@
       cmp-nvim-lsp-document-symbol
       cmp-treesitter
       cmp-path
+      cmp-vsnip
+      vim-vsnip
+      vim-vsnip-integ
     ];
 
     extraPackages = with pkgs; [
@@ -69,6 +72,7 @@
           + "/${module}.lua");
       luaConfig = builtins.concatStringsSep "\n" (map luaRequire [
         "init"
+        "catppuccin"
         "cmp"
         "telescope"
         "treesitter"

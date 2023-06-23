@@ -1,14 +1,22 @@
 require('nvim-treesitter.configs').setup {
-  auto_install = true,
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting=false,
+  ensure_installed = {
+    -- This needs to be empty otherwise treesitter complains about
+    -- directory being not being writable. All the installation of the
+    -- parsers is done declaratively into an immutable location using nix,
+    -- so we don't really need to specify anything there.
+    -- https://github.com/NixOS/nixpkgs/issues/189838
   },
-  ident = { enable = true }, 
-  rainbow = {
+  highlight = { enable = true },
+  incremental_selection = {
     enable = true,
-    extended_mode = true,
-    max_file_lines = nil,
-  }
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm"
+    }
+  },
+  indent = { enable = true },
+  refactor = { highlight_definitions = { enable = true } }
 }
 
