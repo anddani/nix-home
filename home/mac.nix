@@ -9,6 +9,7 @@
     ./modules/kitty.nix
   ];
 
+
   home = {
     username = "andredanielsson";
     homeDirectory = "/Users/andredanielsson";

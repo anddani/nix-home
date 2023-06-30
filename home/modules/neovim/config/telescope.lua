@@ -2,7 +2,7 @@ local telescope = require("telescope")
 
 telescope.setup({
   defaults = {
-    borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+    -- borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
     layout_config = {
       height = 0.9,
       preview_width = 80,
@@ -18,7 +18,7 @@ telescope.setup({
     selection_caret = "❯ ",
   },
   pickers = {
-    find_files = { hidden = true },
+    find_files = { hidden = false },
   },
   extensions = {
     fzf = {

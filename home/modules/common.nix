@@ -18,7 +18,7 @@ in
     ripgrep
 
     # https://github.com/NixOS/nixpkgs/issues/214545
-    # ncdu
+    ncdu
     ranger
     htop
     tree
@@ -38,6 +38,7 @@ in
     androidenv.androidPkgs_9_0.platform-tools
     haskell-ghc
     cabal2nix
+    libusb
     nix-prefetch-git
     docker
     # nixops
@@ -51,9 +52,12 @@ in
     cmake
     ninja
 
+    python3
+
     # Rust
     rustc
     cargo
+    cargo-lambda
     rustfmt
     rust-analyzer
     clippy

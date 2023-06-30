@@ -47,23 +47,23 @@
       elmPackages.elm-language-server
     ];
 
-    coc = {
-      enable = true;
-      settings = {
-        languageserver = {
-          nix = {
-            command = "rnix-lsp";
-            filetypes = [ "nix" ];
-          };
-          elmLS = {
-            command = "elm-language-server";
-            filetypes = [ "elm" ];
-            rootPatterns = [ "elm.json" ];
-          };
-        };
-        "codeLens.enable" = true;
-      };
-    };
+    # coc = {
+    #   enable = true;
+    #   settings = {
+    #     languageserver = {
+    #       nix = {
+    #         command = "rnix-lsp";
+    #         filetypes = [ "nix" ];
+    #       };
+    #       elmLS = {
+    #         command = "elm-language-server";
+    #         filetypes = [ "elm" ];
+    #         rootPatterns = [ "elm.json" ];
+    #       };
+    #     };
+    #     "codeLens.enable" = true;
+    #   };
+    # };
 
     extraConfig = let
       luaRequire = module:
@@ -84,20 +84,5 @@
       lua <<
       ${luaConfig}
       '';
-
-    # extraConfig = ''
-    #   colorscheme gruvbox
-    #   filetype plugin indent on
-
-    #   vnoremap  <leader>y  "+y
-    #   nnoremap  <leader>Y  "+yg_
-    #   nnoremap  <leader>y  "+y
-    #   nnoremap  <leader>yy  "+yy
-
-    #   nnoremap <leader>p "+p
-    #   nnoremap <leader>P "+P
-    #   vnoremap <leader>p "+p
-    #   vnoremap <leader>P "+P
-    #   '';
   };
 }

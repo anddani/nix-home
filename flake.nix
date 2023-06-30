@@ -35,13 +35,8 @@
     };
 
     darwinConfigurations = {
-      # nix build .#darwinConfigurations.Danielsson.system
+      # nix build .#darwinConfigurations.anddaniM2.system
       # ./result/sw/bin/darwin-rebuild switch --flake .
-      Danielsson = darwin.lib.darwinSystem {
-        system = "x86_64-darwin";
-        modules = [ ./darwin/mbp2019/configuration.nix ];
-        inputs = { inherit darwin nixpkgs; };
-      };
       anddaniM2 = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [ ./darwin/mbp2023/configuration.nix ];
