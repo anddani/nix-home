@@ -14,7 +14,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   group = format_sync_grp,
 })
 
-vim.cmd([[ tmap <Esc> <c-\><c-n> ]])
 vim.cmd([[ tmap <C-/> <c-\><c-n><cmd>FloatermToggle myfloat<cr> ]])
 
 --Set completeopt to have a better completion experience

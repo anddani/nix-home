@@ -28,7 +28,6 @@ in
     mpv
     pandoc
 
-    dfu-util
     git-lfs
     gh
     google-cloud-sdk
@@ -52,7 +51,13 @@ in
     cmake
     ninja
 
+    # QMK
+    dfu-util
+    dfu-programmer
+
     python3
+
+    elmPackages.elm-language-server
 
     # Rust
     rustc
@@ -82,6 +87,20 @@ in
     fzf = {
       enable = true;
       enableFishIntegration = true;
+    };
+
+    lazygit = {
+      enable = true;
+      settings = {
+        git = {
+          merging = {
+            args = "--no-ff";
+          };
+          log = {
+            showGraph = "always";
+          };
+        };
+      };
     };
   };
 }

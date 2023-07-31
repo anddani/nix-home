@@ -14,6 +14,7 @@
       nvim-treesitter-textobjects
       nvim-treesitter.withAllGrammars
       rust-tools-nvim
+      lazygit-nvim
       plenary-nvim
       telescope-fzf-native-nvim
       telescope-nvim
@@ -21,6 +22,7 @@
       vim-nix
       which-key-nvim
       trouble-nvim
+      elm-vim
 
       # Completion
       nvim-cmp
@@ -78,6 +80,7 @@
         "treesitter"
         "neogit"
         "rust-tools"
+        "elm"
         "which-key"
       ]);
     in ''
