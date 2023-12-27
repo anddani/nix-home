@@ -1,17 +1,8 @@
 { config, lib, pkgs, ... }:
 {
-  programs.emacs = {
+  programs.emacs.enable = true;
+  programs.doom-emacs = {
     enable = true;
-    extraPackages = epkgs: with epkgs; [
-      evil
-      evil-leader
-      evil-surround
-      evil-collection
-      gruvbox-theme
-      helm
-      magit
-      nix-mode
-      use-package
-    ];
+    doomPrivateDir = ./.doom.d;
   };
 }

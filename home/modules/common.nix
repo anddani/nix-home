@@ -40,8 +40,9 @@ in
     libusb
     nix-prefetch-git
     docker
+    terraform
     # nixops
-    jdk11
+    jdk17
     nodePackages.typescript
     # nodePackages.firebase-tools
     nodejs-18_x
@@ -50,6 +51,7 @@ in
     tmux
     cmake
     ninja
+    graphviz
 
     # QMK
     dfu-util
@@ -73,6 +75,14 @@ in
       enable = true;
       userName = "André Danielsson";
       userEmail = "andredanielsson93@gmail.com";
+      extraConfig = {
+        pull = {
+          rebase = true;
+        };
+        fetch = {
+          prune = true;
+        };
+      };
     };
 
     tmux = {

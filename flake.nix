@@ -15,9 +15,20 @@
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    doom-emacs = {
+      url = "github:nix-community/nix-doom-emacs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    emacs = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = inputs @ { self, flake-utils, darwin, nixpkgs, hm }:
+  outputs = inputs @ { self, flake-utils, doom-emacs, emacs, darwin, nixpkgs, hm }:
   flake-utils.lib.eachDefaultSystem (system: {})
   //
   {
@@ -29,7 +40,11 @@
       };
       mbp2023 = inputs.hm.lib.homeManagerConfiguration {
         pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
-        modules = [ ./home/mac.nix ];
+        modules = [
+          ./home/mac.nix
+          doom-emacs.hmModule
+          { nixpkgs.overlays = [ inputs.emacs.overlay ]; }
+        ];
         extraSpecialArgs = { pkgsUnstable = inputs.nixpkgs.legacyPackages.aarch64-darwin; };
       };
     };

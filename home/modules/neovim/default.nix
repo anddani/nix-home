@@ -46,6 +46,8 @@
       rust-analyzer
       cabal-install
       elmPackages.elm
+      elmPackages.elm-format
+      elmPackages.elm-test
       elmPackages.elm-language-server
     ];
 
