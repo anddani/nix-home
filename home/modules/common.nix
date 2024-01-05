@@ -1,18 +1,4 @@
 { config, pkgs, libs, ... }:
-let
-  ghcVersion = "ghc924";
-
-  haskell-env = with pkgs.haskell.packages.${ghcVersion}; [
-    hlint
-    cabal-install
-    sqlite-simple
-  ];
-  haskell-ghc = pkgs.haskell.packages.${ghcVersion}.ghcWithPackages (p: [
-    p.mtl
-    p.lens
-    p.hspec
-  ]);
-in
 {
   home.packages = with pkgs; [
     ripgrep
@@ -38,19 +24,16 @@ in
     # Development
     scrcpy
     androidenv.androidPkgs_9_0.platform-tools
-    haskell-ghc
-    cabal2nix
     libusb
     nix-prefetch-git
     docker
-    terraform
+    # terraform
     # nixops
     jdk17
     nodePackages.typescript
     # nodePackages.firebase-tools
     nodejs-18_x
     node2nix
-    stack
     tmux
     cmake
     ninja
@@ -71,7 +54,7 @@ in
     rustfmt
     rust-analyzer
     clippy
-  ] ++ haskell-env;
+  ];
 
   programs = {
     git = {

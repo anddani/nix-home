@@ -1,27 +1,9 @@
 { lib, pkgs, ... }:
 with lib;
 {
-  user = "andredanielsson";
-
-  nix = {
-    # Enable flakes by default
-    package = pkgs.nixFlakes;
-    configureBuildUsers = true;
-    settings = {
-      allowed-users = [ user ];
-      experimental-features = [ "nix-command" "flakes" ];
-      extra-platforms = [ "x86_64-darwin" "aarch64-darwin" ];
-    };
-  };
-
   services.nix-daemon.enable = true;
 
   security.pam.enableSudoTouchIdAuth = true;
-
-  users.users.${user} = {
-    home = "/Users/${user}";
-    shell = pkgs.zsh;
-  };
 
   programs = {
     zsh.enable = true;

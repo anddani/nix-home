@@ -6,7 +6,7 @@
     ./modules/alacritty.nix
     ./modules/fish.nix
     ./modules/neovim
-    ./modules/emacs.nix
+    # ./modules/emacs.nix
     ./modules/kitty.nix
   ];
 

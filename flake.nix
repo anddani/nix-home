@@ -32,6 +32,7 @@
       overlays = [
         inputs.emacs-overlay.overlay
       ];
+      user = "andredanielsson";
     in
       {
         # M2 mbp 2023
@@ -44,6 +45,22 @@
             ./darwin/homebrew.nix
             ({ pkgs, ... }: {
               nixpkgs.overlays = overlays;
+
+              nix = {
+                # Enable flakes by default
+                package = pkgs.nixFlakes;
+                configureBuildUsers = true;
+                settings = {
+                  allowed-users = [ user ];
+                  experimental-features = [ "nix-command" "flakes" ];
+                  extra-platforms = [ "x86_64-darwin" "aarch64-darwin" ];
+                };
+              };
+
+              users.users.${user} = {
+                home = "/Users/${user}";
+                shell = pkgs.zsh;
+              };
             })
             home-manager.darwinModule
             {
@@ -63,4 +80,4 @@
           ];
         };
       };
-}
+    }

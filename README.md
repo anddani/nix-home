@@ -1,29 +1,17 @@
 # nix-home
 
-## Install
+# Nix Darwin
 
-1. Install Nix multi-user: https://nixos.org/download.html#nix-install-macos
+## Install Nix
+sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume --daemon
+sudo reboot
 
-2. Install standalone home-manager: https://github.com/nix-community/home-manager#installation
-
-## Nix Darwin
+nix-channel --add https://github.com/LnL7/nix-darwin/archive/master.tar.gz darwin
+nix-channel --update
+nix-shell '<darwin>' -A installer
+darwin-rebuild switch
 
 `$ nix --experimental-features "nix-command flakes" build ".#darwinConfigurations.mbp2023.system"`
 
-`$ ./result/sw/bin/darwin-rebuild switch --flake ~/.nixpkgs`
-
-`$ nix build .#darwinConfigurations.Danielsson.system --extra-experimental-features "nix-command flakes"`
-
 `$ ./result/sw/bin/darwin-rebuild switch --flake .`
-
-`$ chsh -s /run/current-system/sw/bin/fish`
-
-## Home manager
-
-`$ home-manager switch --flake .#mbp2023`
-
-# old nix-home
-
-`$ darwin-rebuild switch -I darwin-config=PATH/TO/configuration.nix`
-
 
