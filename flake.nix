@@ -36,7 +36,7 @@
     in
       {
         # M2 mbp 2023
-        darwinConfigurations.mbp2023 = darwin.lib.darwinSystem {
+        darwinConfigurations.anddaniM2 = darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           # makes all inputs availble in imported files
           specialArgs = { inherit inputs; };

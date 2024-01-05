@@ -24,6 +24,10 @@
       NIXPKGS_ALLOW_UNFREE = "1";
     };
 
+    shellAliases = {
+      l = "ls -la";
+    };
+
     history = {
       expireDuplicatesFirst = true;
       ignoreDups = true;
@@ -43,6 +47,9 @@
 
       # used for homebrew
       export XDG_DATA_DIRS=$XDG_DATA_DIRS:/opt/homebrew/share
+
+      bindkey '^r' fzf-history-widget
+      bindkey '^f' fzf-file-widget
       '';
 
       plugins = [

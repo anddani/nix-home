@@ -4,10 +4,9 @@
     ./modules/home-manager.nix
     ./modules/common.nix
     ./modules/alacritty.nix
-    ./modules/fish.nix
     ./modules/neovim
     # ./modules/emacs.nix
-    ./modules/kitty.nix
+    ./modules/zsh.nix
   ];
 
 
@@ -23,7 +22,7 @@
       eval "$(starship init zsh)"
       '';
     };
-    alacritty.settings.font.size = lib.mkForce 18;
+    alacritty.settings.font.size = lib.mkForce 16;
   };
   home.file.".ideavimrc".text = ''
   set surround
