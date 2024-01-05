@@ -1,62 +1,66 @@
 {
-  description = "Home-Manager flake";
+  description = "My machines";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
-    flake-utils.url = "github:numtide/flake-utils";
-
-    hm = {
+    nixpkgs = {
+      url = "github:NixOS/nixpkgs/nixos-unstable";
+    };
+    home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     darwin = {
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    doom-emacs = {
-      url = "github:nix-community/nix-doom-emacs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # sketchybar = {
+    #   url = "";
+    #   flake = false;
+    # };
 
-    emacs = {
+    emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-  };
-
-  outputs = inputs @ { self, flake-utils, doom-emacs, emacs, darwin, nixpkgs, hm }:
-  flake-utils.lib.eachDefaultSystem (system: {})
-  //
-  {
-    homeConfigurations = {
-      mbp2019 = inputs.hm.lib.homeManagerConfiguration {
-        pkgs = inputs.nixpkgs.legacyPackages.x86_64-darwin;
-        modules = [ ./home/mac.nix ];
-        extraSpecialArgs = { pkgsUnstable = inputs.nixpkgs.legacyPackages.x86_64-darwin; };
-      };
-      mbp2023 = inputs.hm.lib.homeManagerConfiguration {
-        pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
-        modules = [
-          ./home/mac.nix
-          doom-emacs.hmModule
-          { nixpkgs.overlays = [ inputs.emacs.overlay ]; }
-        ];
-        extraSpecialArgs = { pkgsUnstable = inputs.nixpkgs.legacyPackages.aarch64-darwin; };
-      };
-    };
-
-    darwinConfigurations = {
-      # nix build .#darwinConfigurations.anddaniM2.system
-      # ./result/sw/bin/darwin-rebuild switch --flake .
-      anddaniM2 = darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        modules = [ ./darwin/mbp2023/configuration.nix ];
-        inputs = { inherit darwin nixpkgs; };
-      };
     };
   };
+  outputs = { self, nixpkgs, darwin, home-manager, ... }@inputs:
+    let
+      nixpkgsConfig = {
+        allowUnfree = true;
+        allowUnsupportedSystem = false;
+      };
+      overlays = [
+        inputs.emacs-overlay.overlay
+      ];
+    in
+      {
+        # M2 mbp 2023
+        darwinConfigurations.mbp2023 = darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          # makes all inputs availble in imported files
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./darwin/mbp2023/configuration.nix
+            ./darwin/homebrew.nix
+            ({ pkgs, ... }: {
+              nixpkgs.overlays = overlays;
+            })
+            home-manager.darwinModule
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                # makes all inputs available in imported files for hm
+                extraSpecialArgs = { inherit inputs; };
+                users.andredanielsson = { ... }: with inputs; {
+                  imports = [
+                    ./home/mac.nix
+                    ./darwin
+                  ];
+                };
+              };
+            }
+          ];
+        };
+      };
 }

@@ -8,6 +8,10 @@
 
 ## Nix Darwin
 
+`$ nix --experimental-features "nix-command flakes" build ".#darwinConfigurations.mbp2023.system"`
+
+`$ ./result/sw/bin/darwin-rebuild switch --flake ~/.nixpkgs`
+
 `$ nix build .#darwinConfigurations.Danielsson.system --extra-experimental-features "nix-command flakes"`
 
 `$ ./result/sw/bin/darwin-rebuild switch --flake .`

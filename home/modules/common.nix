@@ -32,6 +32,9 @@ in
     gh
     google-cloud-sdk
 
+    starship # terminal prompt
+    slides # terminal presentation tool
+
     # Development
     scrcpy
     androidenv.androidPkgs_9_0.platform-tools
@@ -90,13 +93,15 @@ in
       terminal = "tmux-256color";
     };
 
-    fish = {
-      enable = true;
-    };
-
     fzf = {
       enable = true;
-      enableFishIntegration = true;
+      enableZshIntegration = true;
+      defaultCommand = "fd --type f --hidden --follow --exclude .git --exclude .vim --exclude .cache --exclude vendor";
+      defaultOptions = [
+        "--border sharp"
+        "--inline-info"
+        "--bind ctrl-h:preview-down,ctrl-l:preview-up"
+      ];
     };
 
     lazygit = {

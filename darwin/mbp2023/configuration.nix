@@ -1,31 +1,58 @@
 { lib, pkgs, ... }:
 with lib;
 {
-  nix.package = pkgs.nix;
-  nix.configureBuildUsers = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nix.settings.extra-platforms = [ "x86_64-darwin" "aarch64-darwin" ];
+  user = "andredanielsson";
+
+  nix = {
+    # Enable flakes by default
+    package = pkgs.nixFlakes;
+    configureBuildUsers = true;
+    settings = {
+      allowed-users = [ user ];
+      experimental-features = [ "nix-command" "flakes" ];
+      extra-platforms = [ "x86_64-darwin" "aarch64-darwin" ];
+    };
+  };
 
   services.nix-daemon.enable = true;
 
   security.pam.enableSudoTouchIdAuth = true;
 
-  users.users.andredanielsson = {
-    home = "/Users/andredanielsson";
-    shell = pkgs.fish;
+  users.users.${user} = {
+    home = "/Users/${user}";
+    shell = pkgs.zsh;
   };
 
   programs = {
-    bash.enable = false;
-    zsh.enable = false;
-    fish.enable = true;
+    zsh.enable = true;
   };
 
   environment = {
-    shells = [ pkgs.fish ];
-    loginShell = "/run/current-system/sw/bin/fish";
     variables = {
       EDITOR = "vim";
+    };
+  };
+
+  fonts = {
+    fontDir.enable = true;
+    fonts = with pkgs; [
+      nerdfonts
+      #corefonts # TODO fix
+      recursive
+    ];
+  };
+
+  system = {
+    defaults = {
+      NSGlobalDomain = {
+        AppleFontSmoothing = 0;
+        NSAutomaticSpellingCorrectionEnabled = false;
+      };
+      dock = {
+        autohide = true;
+        autohide-delay = 0.0;
+        autohide-time-modifier = 0.0;
+      };
     };
   };
 
