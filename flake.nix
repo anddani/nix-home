@@ -14,10 +14,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # sketchybar = {
-    #   url = "";
-    #   flake = false;
-    # };
+    sketchybar = {
+      url = "github:FelixKratz/dotfiles";
+      flake = false;
+    };
 
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";

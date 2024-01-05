@@ -132,7 +132,24 @@
         "darwin": "darwin",
         "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "sketchybar": "sketchybar"
+      }
+    },
+    "sketchybar": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1703264412,
+        "narHash": "sha256-8YHB+BZr05KS9vwS046z9wNdDGAFvK3L7FDfB79YUwo=",
+        "owner": "FelixKratz",
+        "repo": "dotfiles",
+        "rev": "8d5754c0a9a217a31a2d9e8caaaf244fe31a8e54",
+        "type": "github"
+      },
+      "original": {
+        "owner": "FelixKratz",
+        "repo": "dotfiles",
+        "type": "github"
       }
     },
     "systems": {
