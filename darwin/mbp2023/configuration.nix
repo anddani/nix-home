@@ -27,6 +27,7 @@ with lib;
   system = {
     defaults = {
       NSGlobalDomain = {
+        _HIHideMenuBar = true;
         AppleFontSmoothing = 0;
         NSAutomaticSpellingCorrectionEnabled = false;
       };

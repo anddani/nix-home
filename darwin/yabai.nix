@@ -8,10 +8,10 @@
       yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
       # bar configuration
-      yabai -m config external_bar all:0:45
-      yabai -m signal --add event=window_focused   action="sketchybar --trigger window_focus"
-      yabai -m signal --add event=window_created   action="sketchybar --trigger windows_on_spaces"
-      yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
+      # yabai -m config external_bar all:45:0
+      # yabai -m signal --add event=window_focused   action="sketchybar --trigger window_focus"
+      # yabai -m signal --add event=window_created   action="sketchybar --trigger windows_on_spaces"
+      # yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
 
       # layout
       yabai -m config layout bsp
@@ -77,7 +77,7 @@
       modifier = "cmd + ctrl";
     in
       ''
-        cmd - return : /Users/andredanielsson/Applications/Home\ Manager\ Apps/Alacritty.app
+        cmd - return : alacritty msg create-window
 
         # Change focused space
         cmd - tab         : ${yabai} -m space --focus next
@@ -85,6 +85,9 @@
 
         ${modifier} - 1 : ${yabai} -m space --focus 1
         ${modifier} - 2 : ${yabai} -m space --focus 2
+        ${modifier} - 3 : ${yabai} -m space --focus 3
+        ${modifier} - 4 : ${yabai} -m space --focus 4
+        ${modifier} - 5 : ${yabai} -m space --focus 5
 
         # Focus window
         ${modifier} - h : ${yabai} -m window --focus west

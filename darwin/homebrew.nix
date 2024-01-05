@@ -23,6 +23,7 @@
     casks = [
       # utilities
       "bartender" # hides mac bar icons
+      "sf-symbols" # icons for sketchybar
     ];
     taps = [
       # default
