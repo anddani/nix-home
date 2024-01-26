@@ -19,6 +19,7 @@
       "gh" # github-cli
 
       "borders" # borders for windows
+      "terraform"
     ];
     casks = [
       # utilities
@@ -28,14 +29,15 @@
     taps = [
       # default
       "homebrew/bundle"
-      "homebrew/cask"
-      "homebrew/cask-drivers"
+      # "homebrew/cask"
+      # "homebrew/cask-drivers"
       "homebrew/cask-fonts"
-      "homebrew/core"
+      # "homebrew/core"
       "homebrew/services"
       # custom
       "koekeishiya/formulae" # yabai
       "FelixKratz/formulae" # sketchybar
+      "hashicorp/tap"
     ];
   };
 }

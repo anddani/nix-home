@@ -5,7 +5,7 @@
     ./modules/common.nix
     ./modules/alacritty.nix
     ./modules/neovim
-    # ./modules/emacs.nix
+    ./modules/emacs.nix
     ./modules/zsh.nix
   ];
 

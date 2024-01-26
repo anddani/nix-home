@@ -27,7 +27,6 @@
     libusb
     nix-prefetch-git
     docker
-    # terraform
     # nixops
     jdk17
     nodePackages.typescript

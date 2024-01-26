@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/bin/bash
 
 IP=$(curl -s https://ipinfo.io/ip)
 LOCATION_JSON=$(curl -s https://ipinfo.io/$IP/json)
@@ -10,6 +10,7 @@ COUNTRY="$(echo $LOCATION_JSON | jq '.country' | tr -d '"')"
 # Line below replaces spaces with +
 LOCATION_ESCAPED="${LOCATION// /+}+${REGION// /+}"
 WEATHER_JSON=$(curl -s "https://wttr.in/$LOCATION_ESCAPED?format=j1")
+WEATHER_LINE=$(curl -s "https://wttr.in/$LOCATION_ESCAPED?format=3&m")
 
 # Fallback if empty
 if [ -z $WEATHER_JSON ]; then
@@ -51,5 +52,6 @@ case ${MOON_PHASE} in
     ;;
 esac
 
-sketchybar --set $NAME label="$LOCATION  $TEMPERATURE糖 $WEATHER_DESCRIPTION"
+# sketchybar --set $NAME label="$LOCATION  $TEMPERATURE °C $WEATHER_DESCRIPTION"
+sketchybar --set $NAME label="$WEATHER_LINE"
 sketchybar --set $NAME.moon icon=$ICON

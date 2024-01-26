@@ -2,26 +2,32 @@
 {
   home.file = {
     battery = {
+      executable = true;
       target = ".config/sketchybar/battery.sh";
       text = builtins.readFile ./sketchybar-plugins/battery.sh;
     };
     clock = {
+      executable = true;
       target = ".config/sketchybar/clock.sh";
       text = builtins.readFile ./sketchybar-plugins/clock.sh;
     };
     current-space = {
+      executable = true;
       target = ".config/sketchybar/current_space.sh";
       text = builtins.readFile ./sketchybar-plugins/current_space.sh;
     };
     front-app = {
+      executable = true;
       target = ".config/sketchybar/front_app.sh";
       text = builtins.readFile ./sketchybar-plugins/front_app.sh;
     };
     volume = {
+      executable = true;
       target = ".config/sketchybar/volume.sh";
       text = builtins.readFile ./sketchybar-plugins/volume.sh;
     };
     weather = {
+      executable = true;
       target = ".config/sketchybar/weather.sh";
       text = builtins.readFile ./sketchybar-plugins/weather.sh;
     };
@@ -142,9 +148,9 @@
             script="$PLUGIN_DIR/volume.sh" \
             --subscribe volume volume_change
 
-            ##### Finalizing Setup #####
-            sketchybar --update
-            sketchybar --trigger space_change
+        ##### Finalizing Setup #####
+        sketchybar --update
+        sketchybar --trigger space_change
       '';
     };
   };

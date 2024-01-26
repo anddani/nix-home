@@ -13,15 +13,6 @@
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    sketchybar = {
-      url = "github:FelixKratz/dotfiles";
-      flake = false;
-    };
-
-    emacs-overlay = {
-      url = "github:nix-community/emacs-overlay";
-    };
   };
   outputs = { self, nixpkgs, darwin, home-manager, ... }@inputs:
     let
@@ -30,7 +21,8 @@
         allowUnsupportedSystem = false;
       };
       overlays = [
-        inputs.emacs-overlay.overlay
+        ./overlays/emacs.nix
+        # inputs.emacs-overlay.overlay
       ];
       user = "andredanielsson";
     in

@@ -1,15 +1,11 @@
-#!/usr/bin/env zsh
+#!/bin/bash
 
 ICON_PADDING_RIGHT=5
 
 case $INFO in
-"Arc")
-    ICON_PADDING_RIGHT=5
-    ICON=󰞍
-    ;;
-"Code")
+"Alacritty")
     ICON_PADDING_RIGHT=4
-    ICON=󰨞
+    ICON=
     ;;
 "Calendar")
     ICON_PADDING_RIGHT=3
@@ -18,12 +14,12 @@ case $INFO in
 "Discord")
     ICON=󰙯
     ;;
-"FaceTime")
-    ICON_PADDING_RIGHT=5
-    ICON=
-    ;;
 "Finder")
     ICON=
+    ;;
+"Firefox")
+    ICON_PADDING_RIGHT=4
+    ICON=
     ;;
 "Google Chrome")
     ICON_PADDING_RIGHT=7
@@ -33,37 +29,19 @@ case $INFO in
     ICON_PADDING_RIGHT=4
     ICON=󰕼
     ;;
-"kitty")
-    ICON=󰄛
-    ;;
-"Messages")
-    ICON=󰍦
-    ;;
-"Notion")
-    ICON_PADDING_RIGHT=6
-    ICON=󰈄
+"Slack")
+    ICON=
     ;;
 "Preview")
     ICON_PADDING_RIGHT=3
     ICON=
     ;;
-"PS Remote Play")
-    ICON_PADDING_RIGHT=3
-    ICON=
-    ;;
-"Spotify")
-    ICON=
-    ;;
 "TextEdit")
     ICON_PADDING_RIGHT=4
     ICON=
     ;;
-"Transmission")
-    ICON_PADDING_RIGHT=3
-    ICON=󰶘
-    ;;
 *)
-    ICON=﯂
+    ICON=
     ;;
 esac
 

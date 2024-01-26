@@ -27,14 +27,15 @@ with lib;
   system = {
     defaults = {
       NSGlobalDomain = {
-        _HIHideMenuBar = true;
+        # _HIHideMenuBar = true;
+        _HIHideMenuBar = false;
         AppleFontSmoothing = 0;
         NSAutomaticSpellingCorrectionEnabled = false;
       };
       dock = {
         autohide = true;
-        autohide-delay = 0.0;
-        autohide-time-modifier = 0.0;
+        # autohide-delay = 0.0;
+        # autohide-time-modifier = 0.0;
       };
     };
   };
