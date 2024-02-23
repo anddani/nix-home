@@ -9,22 +9,13 @@
     };
     brews = [
       "helm"
-      "skhd" # keybinding manager
-      # broken nix builds
-      "yabai" # tiling window manager
-
-      # sketchybar
-      "sketchybar" # macos bar alternative
-      "jq" # json parser
-      "gh" # github-cli
-
-      "borders" # borders for windows
       "terraform"
     ];
     casks = [
       # utilities
       "bartender" # hides mac bar icons
       "sf-symbols" # icons for sketchybar
+      "emacs-mac"
     ];
     taps = [
       # default
@@ -35,9 +26,8 @@
       # "homebrew/core"
       "homebrew/services"
       # custom
-      "koekeishiya/formulae" # yabai
-      "FelixKratz/formulae" # sketchybar
       "hashicorp/tap"
+      "railwaycat/emacsmacport"
     ];
   };
 }

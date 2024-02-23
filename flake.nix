@@ -21,7 +21,7 @@
         allowUnsupportedSystem = false;
       };
       overlays = [
-        ./overlays/emacs.nix
+        # ./overlays
         # inputs.emacs-overlay.overlay
       ];
       user = "andredanielsson";

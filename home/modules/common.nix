@@ -13,10 +13,10 @@
     jq
     mpv
     pandoc
+    fd
 
     git-lfs
     gh
-    google-cloud-sdk
 
     starship # terminal prompt
     slides # terminal presentation tool
@@ -37,6 +37,12 @@
     cmake
     ninja
     graphviz
+
+    (google-cloud-sdk.withExtraComponents ([
+      google-cloud-sdk.components.gke-gcloud-auth-plugin
+      google-cloud-sdk.components.cloud_sql_proxy
+      google-cloud-sdk.components.cbt
+    ]))
 
     # QMK
     dfu-util
