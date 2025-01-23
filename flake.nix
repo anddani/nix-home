@@ -13,8 +13,11 @@
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    helix-master = {
+      url = "github:helix-editor/helix";
+    }
   };
-  outputs = { self, nixpkgs, darwin, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, darwin, home-manager, helix-master, ... }@inputs:
     let
       nixpkgsConfig = {
         allowUnfree = true;

@@ -18,15 +18,6 @@
 
       mouse = { hide_when_typing = true; };
 
-      key_bindings = [
-        {
-          # clear terminal
-          key = "L";
-          mods = "Control";
-          chars = "\\x0c";
-        }
-      ];
-
       font = let fontname = "FiraCode Nerd Font Mono"; in
         {
           normal = { family = fontname; style = "Bold"; };

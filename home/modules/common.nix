@@ -14,6 +14,8 @@
     mpv
     pandoc
     fd
+    p7zip
+    unar
 
     git-lfs
     gh
@@ -23,14 +25,16 @@
 
     # Development
     scrcpy
-    androidenv.androidPkgs_9_0.platform-tools
+    android-tools
     libusb
     nix-prefetch-git
     docker
+    maven
     # nixops
     jdk17
     nodePackages.typescript
-    # nodePackages.firebase-tools
+    nodePackages.pnpm
+    nodePackages.firebase-tools
     nodejs-18_x
     node2nix
     tmux
@@ -53,12 +57,13 @@
     elmPackages.elm-language-server
 
     # Rust
-    rustc
-    cargo
+    # rustc
+    rustup
+    # cargo
     cargo-lambda
-    rustfmt
-    rust-analyzer
-    clippy
+    # rustfmt
+    # rust-analyzer
+    # clippy
   ];
 
   programs = {

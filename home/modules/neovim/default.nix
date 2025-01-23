@@ -39,7 +39,7 @@
     ];
 
     extraPackages = with pkgs; [
-      rnix-lsp
+      # rnix-lsp
       # https://github.com/NixOS/nixpkgs/issues/140774
       # haskell-language-server
       rustfmt

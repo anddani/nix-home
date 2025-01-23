@@ -12,7 +12,7 @@
 
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     enableCompletion = false;
     autocd = true;
     dotDir = ".config/zsh";
@@ -65,10 +65,10 @@
           name = "forgit";
           src = "${pkgs.zsh-forgit}/share/zsh/zsh-forgit";
         }
-        {
-          name = "fzf-tab";
-          src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
-        }
+        # {
+        #   name = "fzf-tab";
+        #   src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
+        # }
       ];
       prezto = {
         enable = true;

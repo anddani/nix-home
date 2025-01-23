@@ -15,14 +15,14 @@ with lib;
     };
   };
 
-  fonts = {
-    fontDir.enable = true;
-    fonts = with pkgs; [
-      nerdfonts
-      #corefonts # TODO fix
-      recursive
-    ];
-  };
+  # fonts = {
+  #   fontDir.enable = true;
+  #   fonts = with pkgs; [
+  #     nerdfonts
+  #     #corefonts # TODO fix
+  #     recursive
+  #   ];
+  # };
 
   system = {
     defaults = {

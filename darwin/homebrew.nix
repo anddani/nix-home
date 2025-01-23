@@ -16,6 +16,7 @@
       "bartender" # hides mac bar icons
       "sf-symbols" # icons for sketchybar
       "emacs-mac"
+      "alacritty"
     ];
     taps = [
       # default

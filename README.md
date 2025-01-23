@@ -15,6 +15,12 @@ darwin-rebuild switch
 
 `$ ./result/sw/bin/darwin-rebuild switch --flake .`
 
+### Install Doom Emacs
+
+`$ git clone https://github.com/hlissner/doom-emacs ~/.emacs.d`
+`$ ~/.emacs.d/bin/doom install`
+
+
 ## Start Yabai
 `yabai --start-service`
 `skhd --start-service`
