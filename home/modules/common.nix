@@ -1,4 +1,4 @@
-{ config, pkgs, libs, ... }:
+{ pkgs, ... }:
 {
   home.packages = with pkgs; [
     ripgrep
@@ -12,21 +12,26 @@
     coreutils
     jq
     mpv
-    pandoc
-    fd
     p7zip
     unar
 
-    git-lfs
     gh
 
     starship # terminal prompt
     slides # terminal presentation tool
 
+    # LSPs
+    tailwindcss-language-server
+    nil
+    nixd
+    rust-analyzer
+    nixpkgs-fmt
+    nodePackages_latest.typescript-language-server
+
     # Development
     scrcpy
     android-tools
-    libusb
+    libusb1
     nix-prefetch-git
     docker
     maven
@@ -36,11 +41,8 @@
     nodePackages.pnpm
     nodePackages.firebase-tools
     nodejs-18_x
-    node2nix
     tmux
-    cmake
-    ninja
-    graphviz
+    zellij
 
     (google-cloud-sdk.withExtraComponents ([
       google-cloud-sdk.components.gke-gcloud-auth-plugin
@@ -54,15 +56,12 @@
 
     python3
 
-    elmPackages.elm-language-server
-
     # Rust
     # rustc
-    rustup
+    # rustup
     # cargo
     cargo-lambda
     # rustfmt
-    # rust-analyzer
     # clippy
   ];
 

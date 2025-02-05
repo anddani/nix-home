@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{ ... }: {
   programs.alacritty = {
     enable = true;
     settings = {
@@ -29,33 +29,29 @@
 
       colors = {
         primary = {
-          background = "0x1a1b26";
-          foreground = "0xc0caf5";
+          background = "0xf8f8f8";
+          foreground = "0x2a2b33";
         };
         normal = {
-          black = "0x15161e";
-          red = "0xf7768e";
-          green = "0x9ece6a";
-          yellow = "0xe0af68";
-          blue = "0x7aa2f7";
-          magenta = "0xbb9af7";
-          cyan = "0x7dcfff";
-          white = "0xa9b1d6";
+          black = "0x000000";
+          red = "0xde3d35";
+          green = "0x3e953a";
+          yellow = "0xd2b67b";
+          blue = "0x2f5af3";
+          magenta = "0xa00095";
+          cyan = "0x3e953a";
+          white = "0xbbbbbb";
         };
         bright = {
-          black = "0x414868";
-          red = "0xf7768e";
-          green = "0x9ece6a";
-          yellow = "0xe0af68";
-          blue = "0x7aa2f7";
-          magenta = "0xbb9af7";
-          cyan = "0x7dcfff";
-          white = "0xc0caf5";
+          black = "0x000000";
+          red = "0xde3d35";
+          green = "0x3e953a";
+          yellow = "0xd2b67b";
+          blue = "0x2f5af3";
+          magenta = "0xa00095";
+          cyan = "0x3e953a";
+          white = "0xffffff";
         };
-        indexed_colors = [
-          { index = 16; color = "0xff9e64"; }
-          { index = 17; color = "0xdb4b4b"; }
-        ];
       };
     };
   };

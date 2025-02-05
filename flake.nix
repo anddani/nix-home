@@ -13,11 +13,11 @@
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    helix-master = {
-      url = "github:helix-editor/helix";
-    }
+    helix = {
+      url = "github:helix-editor/helix?ref=24.07";
+    };
   };
-  outputs = { self, nixpkgs, darwin, home-manager, helix-master, ... }@inputs:
+  outputs = { self, nixpkgs, darwin, home-manager, helix, ... }@inputs:
     let
       nixpkgsConfig = {
         allowUnfree = true;
@@ -43,7 +43,7 @@
 
               nix = {
                 # Enable flakes by default
-                package = pkgs.nixFlakes;
+                package = pkgs.nixVersions.stable;
                 configureBuildUsers = true;
                 settings = {
                   allowed-users = [ user ];
