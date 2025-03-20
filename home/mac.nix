@@ -6,6 +6,7 @@
     ./modules/alacritty.nix
     ./modules/helix
     ./modules/emacs.nix
+    ./modules/zellij.nix
     ./modules/zsh.nix
   ];
 

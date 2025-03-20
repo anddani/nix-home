@@ -13,11 +13,8 @@
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    helix = {
-      url = "github:helix-editor/helix?ref=24.07";
-    };
   };
-  outputs = { self, nixpkgs, darwin, home-manager, helix, ... }@inputs:
+  outputs = { self, nixpkgs, darwin, home-manager, ... }@inputs:
     let
       nixpkgsConfig = {
         allowUnfree = true;
@@ -29,50 +26,51 @@
       ];
       user = "andredanielsson";
     in
-      {
-        # M2 mbp 2023
-        darwinConfigurations.anddaniM2 = darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          # makes all inputs availble in imported files
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./darwin/mbp2023/configuration.nix
-            ./darwin/homebrew.nix
-            ({ pkgs, ... }: {
-              nixpkgs.overlays = overlays;
+    {
+      # M2 mbp 2023
+      darwinConfigurations.anddaniM2 = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        # makes all inputs availble in imported files
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./darwin/mbp2023/configuration.nix
+          ./darwin/homebrew.nix
+          ({ pkgs, ... }: {
+            nixpkgs.overlays = overlays;
 
-              nix = {
-                # Enable flakes by default
-                package = pkgs.nixVersions.stable;
-                configureBuildUsers = true;
-                settings = {
-                  allowed-users = [ user ];
-                  experimental-features = [ "nix-command" "flakes" ];
-                  extra-platforms = [ "x86_64-darwin" "aarch64-darwin" ];
-                };
+            nix = {
+              # Enable flakes by default
+              package = pkgs.nixVersions.stable;
+              settings = {
+                allowed-users = [ user ];
+                trusted-users = [ user ];
+                extra-trusted-users = [ user ];
+                experimental-features = [ "nix-command" "flakes" ];
+                extra-platforms = [ "x86_64-darwin" "aarch64-darwin" ];
               };
+            };
 
-              users.users.${user} = {
-                home = "/Users/${user}";
-                shell = pkgs.zsh;
+            users.users.${user} = {
+              home = "/Users/${user}";
+              shell = pkgs.zsh;
+            };
+          })
+          home-manager.darwinModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              # makes all inputs available in imported files for hm
+              extraSpecialArgs = { inherit inputs; };
+              users.andredanielsson = { ... }: with inputs; {
+                imports = [
+                  ./home/mac.nix
+                  ./darwin
+                ];
               };
-            })
-            home-manager.darwinModule
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                # makes all inputs available in imported files for hm
-                extraSpecialArgs = { inherit inputs; };
-                users.andredanielsson = { ... }: with inputs; {
-                  imports = [
-                    ./home/mac.nix
-                    ./darwin
-                  ];
-                };
-              };
-            }
-          ];
-        };
+            };
+          }
+        ];
       };
-    }
+    };
+}

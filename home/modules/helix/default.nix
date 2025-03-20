@@ -3,10 +3,14 @@
   programs.helix = {
     enable = true;
 
-    # package = inputs.helix.packages.${pkgs.system}.default;
-
     settings = {
-      theme = "onelight";
+      theme = "catppuccin_frappe";
+      keys = {
+        normal = {
+          C-y = "scroll_up";
+          C-e = "scroll_down";
+        };
+      };
       editor = {
         true-color = true;
         file-picker.hidden = true;
@@ -39,18 +43,17 @@
     };
     languages = {
       language-server = {
+        biome = {
+          command = "biome";
+          args = [ "lsp-proxy" ];
+        };
+
         nil = {
           command = lib.getExe pkgs.nil;
         };
 
         nixd = {
           command = lib.getExe pkgs.nixd;
-        };
-
-        typescript-lsp = {
-          command = "typescript-language-server";
-          args = [ "--stdio" ];
-          config.tsserver.path = "${pkgs.typescript}/lib/node_modules/typescript/lib/";
         };
 
         tailwind-lsp = {
@@ -69,13 +72,27 @@
           language-servers = [ "nil" "nixd" ];
         }
         {
+          name = "typescript";
+          auto-format = true;
+          language-servers = [
+            "biome"
+            {
+              name = "typescript-language-server";
+              except-features = [ "format" ];
+            }
+          ];
+        }
+        {
           name = "tsx";
           auto-format = true;
-          formatter = {
-            command = "eslint";
-            args = [ "--stdin" ];
-          };
-          language-servers = [ "tailwind-lsp" ];
+          language-servers = [
+            "biome"
+            "tailwind-lsp"
+            {
+              name = "typescript-language-server";
+              except-features = [ "format" ];
+            }
+          ];
         }
       ];
     };

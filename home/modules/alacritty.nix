@@ -2,6 +2,10 @@
   programs.alacritty = {
     enable = true;
     settings = {
+      env = {
+        TERM = "xterm-256color";
+      };
+
       window = {
         opacity = 1;
         dynamic_title = true;
@@ -25,34 +29,10 @@
           italic = { family = fontname; style = "Light"; };
           size = 14;
         };
+
       cursor.style = "Block";
 
-      colors = {
-        primary = {
-          background = "0xf8f8f8";
-          foreground = "0x2a2b33";
-        };
-        normal = {
-          black = "0x000000";
-          red = "0xde3d35";
-          green = "0x3e953a";
-          yellow = "0xd2b67b";
-          blue = "0x2f5af3";
-          magenta = "0xa00095";
-          cyan = "0x3e953a";
-          white = "0xbbbbbb";
-        };
-        bright = {
-          black = "0x000000";
-          red = "0xde3d35";
-          green = "0x3e953a";
-          yellow = "0xd2b67b";
-          blue = "0x2f5af3";
-          magenta = "0xa00095";
-          cyan = "0x3e953a";
-          white = "0xffffff";
-        };
-      };
+      colors = import ./catppuccin-frappe.nix;
     };
   };
 }

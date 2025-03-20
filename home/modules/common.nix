@@ -37,12 +37,12 @@
     maven
     # nixops
     jdk17
+    vscode-langservers-extracted
     nodePackages.typescript
     nodePackages.pnpm
     nodePackages.firebase-tools
     nodejs-18_x
     tmux
-    zellij
 
     (google-cloud-sdk.withExtraComponents ([
       google-cloud-sdk.components.gke-gcloud-auth-plugin
@@ -59,7 +59,7 @@
     # Rust
     # rustc
     # rustup
-    # cargo
+    cargo
     cargo-lambda
     # rustfmt
     # clippy
@@ -78,6 +78,10 @@
           prune = true;
         };
       };
+    };
+
+    yazi = {
+      enable = true;
     };
 
     tmux = {

@@ -1,11 +1,7 @@
-{ lib, config, pkgs, ... }:
+{ lib, pkgs, ... }:
 with lib;
-let
-  hm = builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz;
-in
 {
   nix.package = pkgs.nix;
-  nix.configureBuildUsers = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   services.nix-daemon.enable = true;

@@ -2,12 +2,18 @@
   home.file.starship = {
     target = ".config/starship.toml";
     text = ''
-    add_newline = false
+      add_newline = false
 
-    [character]
-    success_symbol = "[➜](bold green) "
-    error_symbol = "[✗](bold red) "
+      [character]
+      success_symbol = "[➜](bold green) "
+      error_symbol = "[✗](bold red) "
     '';
+  };
+
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
   };
 
   programs.zsh = {
@@ -19,13 +25,14 @@
     #defaultKeymap = "viins"; #vicmd or viins
 
     sessionVariables = {
-      EDITOR = "nvim";
-      VISUAL = "nvim";
+      EDITOR = "hx";
+      VISUAL = "hx";
       NIXPKGS_ALLOW_UNFREE = "1";
     };
 
     shellAliases = {
       l = "ls -la";
+      k = "kubectl";
     };
 
     history = {
@@ -50,41 +57,41 @@
 
       bindkey '^r' fzf-history-widget
       bindkey '^f' fzf-file-widget
-      '';
+    '';
 
-      plugins = [
-        {
-          name = "fast-syntax-highlighting";
-          src = "${pkgs.zsh-fast-syntax-highlighting}/share/zsh/site-functions";
-        }
-        {
-          name = "zsh-nix-shell";
-          src = "${pkgs.zsh-nix-shell}/share/zsh-nix-shell";
-        }
-        {
-          name = "forgit";
-          src = "${pkgs.zsh-forgit}/share/zsh/zsh-forgit";
-        }
-        # {
-        #   name = "fzf-tab";
-        #   src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
-        # }
-      ];
-      prezto = {
-        enable = true;
-        caseSensitive = false;
-        utility.safeOps = true;
-        editor = {
-          dotExpansion = true;
-          keymap = "vi";
-        };
-        pmodules = [
-          "autosuggestions"
-          "directory"
-          "editor"
-          "git"
-          "terminal"
-        ];
+    plugins = [
+      {
+        name = "fast-syntax-highlighting";
+        src = "${pkgs.zsh-fast-syntax-highlighting}/share/zsh/site-functions";
+      }
+      {
+        name = "zsh-nix-shell";
+        src = "${pkgs.zsh-nix-shell}/share/zsh-nix-shell";
+      }
+      {
+        name = "forgit";
+        src = "${pkgs.zsh-forgit}/share/zsh/zsh-forgit";
+      }
+      # {
+      #   name = "fzf-tab";
+      #   src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
+      # }
+    ];
+    prezto = {
+      enable = true;
+      caseSensitive = false;
+      utility.safeOps = true;
+      editor = {
+        dotExpansion = true;
+        keymap = "vi";
       };
+      pmodules = [
+        "autosuggestions"
+        "directory"
+        "editor"
+        "git"
+        "terminal"
+      ];
     };
-  }
+  };
+}
