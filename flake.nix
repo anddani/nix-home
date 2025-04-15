@@ -13,6 +13,7 @@
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    helix.url = "github:helix-editor/helix/master";
   };
   outputs = { self, nixpkgs, darwin, home-manager, ... }@inputs:
     let
